@@ -1,0 +1,432 @@
+<title>Elyos Atlas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>.leaflet-image-layer,.leaflet-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane,.leaflet-pane>canvas,.leaflet-pane>svg,.leaflet-tile,.leaflet-tile-container,.leaflet-zoom-box{position:absolute;left:0;top:0}.leaflet-container{overflow:hidden}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-user-drag:none}.leaflet-tile::selection{background:0 0}.leaflet-safari .leaflet-tile{image-rendering:-webkit-optimize-contrast}.leaflet-safari .leaflet-tile-container{width:1600px;height:1600px;-webkit-transform-origin:0 0}.leaflet-marker-icon,.leaflet-marker-shadow{display:block}.leaflet-container .leaflet-overlay-pane svg{max-width:none!important;max-height:none!important}.leaflet-container .leaflet-marker-pane img,.leaflet-container .leaflet-shadow-pane img,.leaflet-container .leaflet-tile,.leaflet-container .leaflet-tile-pane img,.leaflet-container img.leaflet-image-layer{max-width:none!important;max-height:none!important;width:auto;padding:0}.leaflet-container img.leaflet-tile{mix-blend-mode:plus-lighter}.leaflet-container.leaflet-touch-zoom{-ms-touch-action:pan-x pan-y;touch-action:pan-x pan-y}.leaflet-container.leaflet-touch-drag{-ms-touch-action:pinch-zoom;touch-action:none;touch-action:pinch-zoom}.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom{-ms-touch-action:none;touch-action:none}.leaflet-container{-webkit-tap-highlight-color:transparent}.leaflet-container a{-webkit-tap-highlight-color:rgba(51,181,229,.4)}.leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}.leaflet-zoom-box{width:0;height:0;-moz-box-sizing:border-box;box-sizing:border-box;z-index:800}.leaflet-overlay-pane svg{-moz-user-select:none}.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}.leaflet-vml-shape{width:1px;height:1px}.lvml{behavior:url(#default#VML);display:inline-block;position:absolute}.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto}.leaflet-bottom,.leaflet-top{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-control{float:left;clear:both}.leaflet-right .leaflet-control{float:right}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}.leaflet-fade-anim .leaflet-popup{opacity:0;-webkit-transition:opacity .2s linear;-moz-transition:opacity .2s linear;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}.leaflet-zoom-animated{-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0}svg.leaflet-zoom-animated{will-change:transform}.leaflet-zoom-anim .leaflet-zoom-animated{-webkit-transition:-webkit-transform .25s cubic-bezier(0,0,.25,1);-moz-transition:-moz-transform .25s cubic-bezier(0,0,.25,1);transition:transform .25s cubic-bezier(0,0,.25,1)}.leaflet-pan-anim .leaflet-tile,.leaflet-zoom-anim .leaflet-tile{-webkit-transition:none;-moz-transition:none;transition:none}.leaflet-zoom-anim .leaflet-zoom-hide{visibility:hidden}.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:-webkit-grab;cursor:-moz-grab;cursor:grab}.leaflet-crosshair,.leaflet-crosshair .leaflet-interactive{cursor:crosshair}.leaflet-control,.leaflet-popup-pane{cursor:auto}.leaflet-dragging .leaflet-grab,.leaflet-dragging .leaflet-grab .leaflet-interactive,.leaflet-dragging .leaflet-marker-draggable{cursor:move;cursor:-webkit-grabbing;cursor:-moz-grabbing;cursor:grabbing}.leaflet-image-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}.leaflet-image-layer.leaflet-interactive,.leaflet-marker-icon.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive,svg.leaflet-image-layer.leaflet-interactive path{pointer-events:visiblePainted;pointer-events:auto}.leaflet-container{background:#ddd;outline-offset:1px}.leaflet-container a{color:#0078a8}.leaflet-zoom-box{border:2px dotted #38f;background:rgba(255,255,255,.5)}.leaflet-container{font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:12px;font-size:.75rem;line-height:1.5}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}.leaflet-bar a{background-color:#fff;border-bottom:1px solid #ccc;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:#000}.leaflet-bar a,.leaflet-control-layers-toggle{background-position:50% 50%;background-repeat:no-repeat;display:block}.leaflet-bar a:focus,.leaflet-bar a:hover{background-color:#f4f4f4}.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px}.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none}.leaflet-bar a.leaflet-disabled{cursor:default;background-color:#f4f4f4;color:#bbb}.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}.leaflet-touch .leaflet-bar a:first-child{border-top-left-radius:2px;border-top-right-radius:2px}.leaflet-touch .leaflet-bar a:last-child{border-bottom-left-radius:2px;border-bottom-right-radius:2px}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px 'Lucida Console',Monaco,monospace;text-indent:1px}.leaflet-touch .leaflet-control-zoom-in,.leaflet-touch .leaflet-control-zoom-out{font-size:22px}.leaflet-control-layers{box-shadow:0 1px 5px rgba(0,0,0,.4);background:#fff;border-radius:5px}.leaflet-control-layers-toggle{background-image:none;width:36px;height:36px}.leaflet-retina .leaflet-control-layers-toggle{background-image:none;background-size:26px 26px}.leaflet-touch .leaflet-control-layers-toggle{width:44px;height:44px}.leaflet-control-layers .leaflet-control-layers-list,.leaflet-control-layers-expanded .leaflet-control-layers-toggle{display:none}.leaflet-control-layers-expanded .leaflet-control-layers-list{display:block;position:relative}.leaflet-control-layers-expanded{padding:6px 10px 6px 6px;color:#333;background:#fff}.leaflet-control-layers-scrollbar{overflow-y:scroll;overflow-x:hidden;padding-right:5px}.leaflet-control-layers-selector{margin-top:2px;position:relative;top:1px}.leaflet-control-layers label{display:block;font-size:13px;font-size:1.08333em}.leaflet-control-layers-separator{height:0;border-top:1px solid #ddd;margin:5px -10px 5px -6px}.leaflet-default-icon-path{background-image:none}.leaflet-container .leaflet-control-attribution{background:#fff;background:rgba(255,255,255,.8);margin:0}.leaflet-control-attribution,.leaflet-control-scale-line{padding:0 5px;color:#333;line-height:1.4}.leaflet-control-attribution a{text-decoration:none}.leaflet-control-attribution a:focus,.leaflet-control-attribution a:hover{text-decoration:underline}.leaflet-attribution-flag{display:inline!important;vertical-align:baseline!important;width:1em;height:.6669em}.leaflet-left .leaflet-control-scale{margin-left:5px}.leaflet-bottom .leaflet-control-scale{margin-bottom:5px}.leaflet-control-scale-line{border:2px solid #777;border-top:none;line-height:1.1;padding:2px 5px 1px;white-space:nowrap;-moz-box-sizing:border-box;box-sizing:border-box;background:rgba(255,255,255,.8);text-shadow:1px 1px #fff}.leaflet-control-scale-line:not(:first-child){border-top:2px solid #777;border-bottom:none;margin-top:-2px}.leaflet-control-scale-line:not(:first-child):not(:last-child){border-bottom:2px solid #777}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-attribution,.leaflet-touch .leaflet-control-layers{box-shadow:none}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-layers{border:2px solid rgba(0,0,0,.2);background-clip:padding-box}.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:12px}.leaflet-popup-content{margin:13px 24px 13px 20px;line-height:1.3;font-size:13px;font-size:1.08333em;min-height:1px}.leaflet-popup-content p{margin:17px 0;margin:1.3em 0}.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-top:-1px;margin-left:-20px;overflow:hidden;pointer-events:none}.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;pointer-events:auto;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#fff;color:#333;box-shadow:0 3px 14px rgba(0,0,0,.4)}.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;text-align:center;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:#757575;text-decoration:none;background:0 0}.leaflet-container a.leaflet-popup-close-button:focus,.leaflet-container a.leaflet-popup-close-button:hover{color:#585858}.leaflet-popup-scrolled{overflow:auto}.leaflet-oldie .leaflet-popup-content-wrapper{-ms-zoom:1}.leaflet-oldie .leaflet-popup-tip{width:24px;margin:0 auto}.leaflet-oldie .leaflet-control-layers,.leaflet-oldie .leaflet-control-zoom,.leaflet-oldie .leaflet-popup-content-wrapper,.leaflet-oldie .leaflet-popup-tip{border:1px solid #999}.leaflet-div-icon{background:#fff;border:1px solid #666}.leaflet-tooltip{position:absolute;padding:6px;background-color:#fff;border:1px solid #fff;border-radius:3px;color:#222;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.4)}.leaflet-tooltip.leaflet-interactive{cursor:pointer;pointer-events:auto}.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before,.leaflet-tooltip-top:before{position:absolute;pointer-events:none;border:6px solid transparent;background:0 0;content:""}.leaflet-tooltip-bottom{margin-top:6px}.leaflet-tooltip-top{margin-top:-6px}.leaflet-tooltip-bottom:before,.leaflet-tooltip-top:before{left:50%;margin-left:-6px}.leaflet-tooltip-top:before{bottom:0;margin-bottom:-12px;border-top-color:#fff}.leaflet-tooltip-bottom:before{top:0;margin-top:-12px;margin-left:-6px;border-bottom-color:#fff}.leaflet-tooltip-left{margin-left:-6px}.leaflet-tooltip-right{margin-left:6px}.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{top:50%;margin-top:-6px}.leaflet-tooltip-left:before{right:0;margin-right:-12px;border-left-color:#fff}.leaflet-tooltip-right:before{left:0;margin-left:-12px;border-right-color:#fff}@media print{.leaflet-control{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style>
+<style>
+/* Layout: full-bleed map with a parchment-dark side ledger on the left (bottom sheet on phones). Accent follows the faction of the open map. */
+:root{
+  color-scheme:dark;
+  --ink:#0e161e;          /* the game's own map backdrop */
+  --sea:#1e272c;          /* water colour of the in-game map, fills around the map picture */
+  --panel:#141e28;
+  --panel-2:#1b2733;
+  --line:#2a3846;
+  --fg:#e6e1d6;
+  --muted:#93a0ad;
+  --accent:#d9b45b;       /* Elyos gold; swapped per map */
+  --accent-ink:#1a1408;
+  --boss:#ef6a4c;
+  --kib:#5fd3c4;
+  --pet:#c9a6ff;
+  --f-display:"Marcellus","Palatino Linotype","Book Antiqua",Georgia,serif;
+  --f-body:"IBM Plex Sans",system-ui,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--panel:#f3efe6;--panel-2:#e9e3d6;--line:#d3cab8;--fg:#1f2329;--muted:#5d6670;--ink:#0e161e;color-scheme:light}}
+:root[data-theme="light"]{--panel:#f3efe6;--panel-2:#e9e3d6;--line:#d3cab8;--fg:#1f2329;--muted:#5d6670;--ink:#0e161e;color-scheme:light}
+body[data-map="altgard"]{--accent:#a993f0;--accent-ink:#120d22}
+body[data-map="abyss"]{--accent:#5fc0d8;--accent-ink:#06171c}
+html,body{height:100%}
+body{background:var(--ink);color:var(--fg);font-family:var(--f-body);font-size:14px;overflow:hidden}
+.app{display:grid;grid-template-columns:clamp(420px,30vw,480px) 1fr;height:100%}
+aside{background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0;min-width:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:16px;padding-block:16px 0}
+.brand{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+h1{font-family:var(--f-display);font-weight:400;font-size:26px;letter-spacing:.02em;margin:0;text-wrap:balance}
+h1{display:flex;align-items:center;gap:8px;white-space:nowrap}
+h1 .star{font-family:"Segoe UI Symbol","DejaVu Sans",sans-serif;font-size:36px;line-height:1;color:#9b6cff;transform:translateY(-2px)}   /* the glyph sits on the baseline; lift it to the cap-height middle */
+.brand{align-items:center;justify-content:flex-start;gap:12px;margin-bottom:14px}
+.brand .sub{margin:0;white-space:nowrap;padding-top:4px}
+.brand .sheet-toggle{margin-left:auto}
+.sub{color:var(--muted);font-size:12px;margin:4px 0 14px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--panel-2);padding:4px;border-radius:8px}
+.tabs button{font:500 13px var(--f-body);color:var(--muted);background:none;border:0;border-radius:6px;padding:8px 4px;cursor:pointer}
+.tabs button small{display:block;font-size:10px;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.tabs button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.tabs button:focus-visible,.pet:focus-visible,.hit:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* search fields keep their ring; the language picker and checkbox rows show focus as a shaded background instead */
+input[type=search]:focus-visible{outline:2px solid #9b6cff;outline-offset:2px}
+select,.row input{outline:none}
+select:focus{background:var(--panel)}
+.row:has(input:focus-visible){background:var(--panel-2)}
+.tools{display:grid;grid-template-columns:1fr auto;gap:6px;margin-top:12px;position:relative}
+input[type=search],select{font:14px var(--f-body);color:var(--fg);background:var(--panel-2);border:1px solid var(--line);border-radius:6px;padding:8px 10px;min-width:0}
+.results{position:absolute;top:100%;left:0;right:0;z-index:1200;margin-top:4px;background:var(--panel);border:1px solid var(--line);border-radius:8px;max-height:300px;overflow:auto;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.hit{display:flex;gap:8px;align-items:center;width:100%;text-align:left;background:none;border:0;color:var(--fg);padding:8px 10px;font:13px var(--f-body);cursor:pointer}
+.hit:hover{background:var(--panel-2)}
+.hit em{font-style:normal;color:var(--muted);font-size:11px;margin-left:auto;white-space:nowrap}
+.scroll{overflow:auto;flex:1;min-height:0;margin-top:14px;padding:4px 4px 16px;margin-left:-4px}   /* 4px room so focus rings are not clipped by the scroll edge */
+h2{font:600 11px var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:18px 0 6px;display:flex;justify-content:space-between}
+h2:first-child{margin-top:0}
+.row{display:flex;align-items:center;gap:10px;padding:6px 4px;border-radius:6px;cursor:pointer}
+.row:hover{background:var(--panel-2)}
+.row input{accent-color:var(--accent);margin:0}
+.row .n{margin-left:auto;font:12px var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.sw{width:12px;height:12px;border-radius:50%;flex:none;border:1.5px solid rgba(0,0,0,.45)}
+.sw.dia{border-radius:2px;transform:rotate(45deg);width:10px;height:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;column-gap:12px}
+.grid2 .row{min-width:0}
+.pets{display:flex;flex-direction:column;gap:2px;max-height:none}
+.petbar{display:flex;gap:8px;align-items:flex-start;justify-content:space-between;margin-bottom:8px}
+.petbar select{padding:5px 8px;font-size:12px;flex:none}
+.chips{display:flex;flex-wrap:wrap;gap:4px;min-width:0}
+.chip{display:inline-flex;align-items:center;gap:5px;font:500 12px var(--f-body);color:var(--fg);background:var(--panel-2);border:1px solid var(--line);border-radius:999px;padding:4px 9px;cursor:pointer}
+.chip .sw{width:8px;height:8px;border:0}
+.chip small{color:var(--muted);font:11px var(--f-mono)}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chip[aria-pressed="true"] small{color:var(--accent-ink)}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pets h3{font:600 11px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:10px 4px 2px;display:flex;align-items:center;gap:6px}
+.pet{display:flex;gap:8px;align-items:center;background:none;border:0;color:var(--fg);text-align:left;padding:6px 4px;border-radius:6px;font:13px var(--f-body);cursor:pointer}
+.pet:hover{background:var(--panel-2)}
+.pet[aria-pressed="true"]{background:color-mix(in srgb,var(--pet) 22%,transparent)}
+.pet .cat{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.pet .n{margin-left:auto;font:12px var(--f-mono);color:var(--muted)}
+.note{color:var(--muted);font-size:12px;line-height:1.5;margin:16px 0 0}
+.note a{color:var(--accent)}
+#map{height:100%;background:var(--sea)}
+.leaflet-container{background:var(--sea);font-family:var(--f-body)}
+.hud{position:absolute;z-index:900;right:calc(12px + env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));background:rgba(14,22,30,.85);color:#e6e1d6;border:1px solid #2a3846;border-radius:6px;padding:6px 10px;font:12px var(--f-mono);font-variant-numeric:tabular-nums;pointer-events:none}
+.mapwrap{position:relative;min-width:0}
+.maptitle{position:absolute;z-index:900;left:20px;top:calc(16px + env(safe-area-inset-top,0px));pointer-events:none;font-family:var(--f-display);font-size:34px;color:#efe6cf;text-shadow:0 2px 12px rgba(0,0,0,.8);letter-spacing:.04em}
+.maptitle small{display:block;font:600 11px var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.leaflet-bar a{background:#141e28;color:#e6e1d6;border-color:#2a3846}
+.leaflet-bar a:hover{background:#1b2733}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#141e28;color:#e6e1d6;border:1px solid #2a3846}
+.leaflet-popup-content{margin:12px 14px;font-size:13px}
+.leaflet-container a.leaflet-popup-close-button{color:#93a0ad}
+.pop{display:flex;gap:10px;align-items:flex-start;min-width:200px}
+.pop img{width:64px;height:64px;border-radius:6px;object-fit:cover;background:#0e161e;border:1px solid #2a3846}
+.pop b{font-family:var(--f-display);font-weight:400;font-size:17px;display:block;line-height:1.2}
+.pop .k{font:600 10px var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:#93a0ad;display:block;margin-bottom:2px}
+.pop .c{font:11px var(--f-mono);color:#93a0ad;margin-top:4px;display:block}
+.pop .t{display:inline-block;margin-top:6px;padding:2px 6px;border-radius:4px;background:rgba(239,106,76,.18);color:#ffb39f;font-size:12px}
+.leaflet-tooltip{background:#141e28;color:#e6e1d6;border:1px solid #2a3846;box-shadow:none;font:12px var(--f-body)}
+.leaflet-tooltip-top:before{border-top-color:#2a3846}
+.sizer{position:absolute;z-index:900;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:10px;background:rgba(14,22,30,.85);color:#e6e1d6;border:1px solid #2a3846;border-radius:999px;padding:6px 14px;font:500 12px var(--f-body);white-space:nowrap}
+.sizer input{width:160px;accent-color:#9b6cff;margin:0}
+.sizer output{font:12px var(--f-mono);min-width:3.5ch;text-align:right;color:#93a0ad}
+.sizer .dotS,.sizer .dotL{border-radius:50%;background:#c9a6ff;flex:none}
+.sizer .dotS{width:5px;height:5px}.sizer .dotL{width:11px;height:11px}
+@media (max-width:760px){.sizer input{width:110px}.sizer{bottom:12px}}
+.bossic{width:18px;height:18px;transform:rotate(45deg) scale(var(--mk,1));background:var(--boss);border:2px solid #2b0d06;box-shadow:0 0 0 2px rgba(239,106,76,.35),0 2px 6px rgba(0,0,0,.6);border-radius:3px}
+.bossic.fixed{background:#ffcf5a;border-color:#3a2a00;box-shadow:0 0 0 2px rgba(255,207,90,.35),0 2px 6px rgba(0,0,0,.6)}
+.kibic{width:12px;height:20px;background:linear-gradient(#bff6ee,var(--kib));clip-path:polygon(50% 0,100% 30%,80% 100%,20% 100%,0 30%);filter:drop-shadow(0 1px 2px #000)}
+.sheet-toggle{display:none}
+@media (max-width:760px){
+  .app{grid-template-columns:1fr;grid-template-rows:1fr auto}
+  .mapwrap{grid-row:1}
+  aside{grid-row:2;border-right:0;border-top:1px solid var(--line);max-height:46vh;padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px 0}
+  aside.collapsed .scroll,aside.collapsed .sub{display:none}
+  aside.collapsed{max-height:none;padding-bottom:max(10px,env(safe-area-inset-bottom,0px))}
+  .sheet-toggle{display:block;font:500 12px var(--f-body);background:var(--panel-2);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:6px 10px;cursor:pointer}
+  h1{font-size:21px}
+  .maptitle{font-size:24px;left:12px}
+  .scroll{padding-bottom:max(16px,env(safe-area-inset-bottom,0px))}
+}
+@media (prefers-reduced-motion:reduce){.leaflet-zoom-anim .leaflet-zoom-animated{transition:none!important}}
+</style>
+
+<div class="app">
+  <aside id="side">
+    <div class="brand">
+      <h1><span class="star" aria-hidden="true">✧</span>ELYOS ATLAS</h1>
+      <p class="sub">AION 2 · Hitta nästa fynd</p>
+      <button class="sheet-toggle" id="sheetBtn" type="button" aria-expanded="true">Hide panel</button>
+    </div>
+    <div class="tabs" role="group" aria-label="Map">
+      <button type="button" data-map="verteron" aria-pressed="true">Verteron<small>Elyos</small></button>
+      <button type="button" data-map="altgard" aria-pressed="false">Altgard<small>Asmodian</small></button>
+      <button type="button" data-map="abyss" aria-pressed="false">Abyss<small>Reshanta</small></button>
+    </div>
+    <div class="tools">
+      <input type="search" id="q" placeholder="Search boss, place, monster, pet…" autocomplete="off" aria-label="Search">
+      <select id="lang" aria-label="Language for game names">
+        <option value="en">EN</option><option value="de">DE</option><option value="fr">FR</option><option value="es">ES</option>
+        <option value="pt">PT</option><option value="ru">RU</option><option value="ja">JA</option><option value="ko">KO</option>
+      </select>
+      <div class="results" id="results" hidden></div>
+    </div>
+    <div class="scroll">
+      <h2>Layers</h2>
+      <label class="row"><input type="checkbox" id="L_boss" checked><span class="sw dia" style="background:var(--boss)"></span>Field bosses<span class="n" id="c_boss"></span></label>
+      <label class="row"><input type="checkbox" id="L_kib" checked><span class="sw" style="background:var(--kib)"></span>Kibelisks (teleport)<span class="n" id="c_kib"></span></label>
+      <label class="row"><input type="checkbox" id="L_pets"><span class="sw" style="background:var(--pet)"></span>Enemy Monster<span class="n" id="c_pets"></span></label>
+      <h2>Gathering <span id="c_gather"></span></h2>
+      <div class="grid2" id="gatherRows"></div>
+      <h2>Pet monsters <span>click to highlight</span></h2>
+      <input type="search" id="petq" placeholder="Filter pets…" autocomplete="off" aria-label="Filter pets" style="width:100%;margin-bottom:8px">
+      <div class="petbar">
+        <div class="chips" id="petTypes" role="group" aria-label="Pet type"></div>      </div>
+      <div class="pets" id="petList"></div>
+    </div>
+  </aside>
+  <div class="mapwrap">
+    <div id="map" aria-label="Map"></div>
+    <div class="maptitle" id="mapTitle"><small>Elyos</small>Verteron</div>
+    <div class="hud" id="hud">x —  y —</div>
+    <label class="sizer" for="mkSize"><span>Marker size</span><span class="dotS"></span><input type="range" id="mkSize" min="1" max="5" step="0.1" value="2"><span class="dotL"></span><output id="mkOut">2.0×</output></label>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script src="data.js"></script>
+<script>
+(function(){
+const D = window.AION;
+const FACTION = {verteron:"Elyos", altgard:"Asmodian", abyss:"Reshanta"};
+const GK = {Od:["Odyle","#7fd0ff"],Ore:["Ore","#c7c9cf"],Wood:["Wood","#b5874f"],Herb:["Herbs","#7bd36b"],Food:["Food","#ffb35c"],
+  Gemstone:["Gemstone","#ff6fb4"],Cotton:["Cotton","#f2f0e6"],Fragment:["Empyrean Trace","#ffe27a"],Cube:["Hidden Cube","#9f8cff"]};
+const CAT = {Feral:"Fera",Intellect:"Cogni",Nature:"Natura",Trans:"Varian",Special:"Special"};
+const CATC = {Feral:"#e8875a",Nature:"#7bd36b",Intellect:"#6fb8ff",Trans:"#c9a6ff",Special:"#ffd36b","":"#93a0ad"};
+const DAYS = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const store = {get(k,d){try{const v=localStorage.getItem("atlas."+k);return v==null?d:JSON.parse(v)}catch(e){return d}},
+               set(k,v){try{localStorage.setItem("atlas."+k,JSON.stringify(v))}catch(e){}}};
+
+let lang = store.get("lang","en");
+let petType = store.get("petType","all");
+const petSort = "type";   // the list is always grouped by type, most spawns first within each group
+let cur = null, map, layers = {}, tileLayer, maskCache = {}, selPet = null, petHi = null, renderer;
+// marker size: every dot keeps its base radius so the slider can scale it
+let mk = Math.min(5, Math.max(1, Number(store.get("mkSize", 2)) || 2)), dots = [];
+function dot(at, o){ const r = o.radius; o.radius = r*mk; const c = L.circleMarker(at, o); c._baseR = r; dots.push(c); return c; }
+function applySize(){
+  dots.forEach(c=>c.setRadius(c._baseR*mk));
+  document.documentElement.style.setProperty("--mk", mk);
+  el("mkOut").textContent = mk.toFixed(1)+"×";
+}
+const hidden = new Set(store.get("hiddenKinds", ["Cube","Fragment"]));   // the two densest kinds start hidden
+const el = id => document.getElementById(id);
+el("lang").value = lang;
+
+const nm = n => !n ? null : (n[lang] || n.en || Object.values(n)[0]);
+const pts = p => (p.length && typeof p[0] === "number") ? [p] : p;   // single points arrive flattened
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = n => Math.round(n).toLocaleString("en-US");
+
+map = L.map("map", {crs:L.CRS.Simple, zoomSnap:0.25, zoomDelta:0.5, attributionControl:false, minZoom:-5, maxZoom:2, preferCanvas:true, zoomControl:true});
+map.zoomControl.setPosition("topright");
+map.createPane("tiles").style.zIndex = 250;   // keep the map picture under the canvas markers
+renderer = L.canvas({padding:0.3});
+
+function ll(m, x, y){ return L.latLng(-(m.oy + m.scale*y), m.ox + m.scale*x); }
+function toWorld(m, latlng){ return [(latlng.lng - m.ox)/m.scale, (-latlng.lat - m.oy)/m.scale]; }
+
+// Each tile ships as a colour JPEG plus a grey mask PNG (sea = black). Composite them into one transparent image.
+function loadImg(src){ return new Promise((res,rej)=>{const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=src;}); }
+async function masked(key, t){
+  const id = key+"_"+t;
+  if (maskCache[id]) return maskCache[id];
+  const [c, m] = await Promise.all([loadImg("tiles/"+id+".jpg"), loadImg("tiles/"+id+"_a.png")]);
+  const W = c.naturalWidth, H = c.naturalHeight;
+  const cv = document.createElement("canvas"); cv.width=W; cv.height=H;
+  const g = cv.getContext("2d");
+  g.drawImage(m,0,0,W,H); const a = g.getImageData(0,0,W,H).data;
+  g.clearRect(0,0,W,H); g.drawImage(c,0,0); const img = g.getImageData(0,0,W,H); const p = img.data;
+  for (let i=0;i<p.length;i+=4) p[i+3] = a[i];
+  g.putImageData(img,0,0);
+  const url = await new Promise(r=>cv.toBlob(b=>r(URL.createObjectURL(b)),"image/webp",0.9));
+  return maskCache[id] = url;
+}
+
+function popupBoss(b){
+  let t = "";
+  if (b.fixed){ const f=b.fixed; t = `<span class="t">${f.kind==="weekly"?"Weekly":esc(f.kind)}: ${(f.days||[]).map(d=>DAYS[d]).join(", ")} at ${esc(f.at||"")}${f.openMinutes?` · open ${f.openMinutes} min`:""}</span>`; }
+  return `<div class="pop">${b.img?`<img src="thumbs/${esc(b.img)}" alt="">`:""}<div><span class="k">Field boss</span><b>${esc(nm(b.n))}</b>${t}<span class="c">NPC ${b.id} · x ${fmt(b.x)} y ${fmt(b.y)}</span></div></div>`;
+}
+function popupKib(k){ return `<div class="pop"><div><span class="k">Kibelisk</span><b>${esc(nm(k.n))}</b><span class="c">x ${fmt(k.x)} y ${fmt(k.y)}</span></div></div>`; }
+function popupNpc(s, p){
+  const pet = s.pet && D.pets[s.pet];
+  return `<div class="pop"><div><span class="k">Pet monster</span><b>${esc(nm(s.n)||"NPC "+s.id)}</b>${pet?`<span class="c" style="color:#c9a6ff">Pet:${esc(nm(pet.n))}</span>`:""}<span class="c">NPC ${s.id} · x ${fmt(p[0])} y ${fmt(p[1])}</span></div></div>`;
+}
+
+function petGroups(key){
+  const g = new Map();
+  for (const s of D.spawns[key]) {
+    const k = s.pet ? "p"+s.pet : "n"+s.id;
+    if (!g.has(k)) g.set(k, {k, pet:s.pet, npcs:[], count:0});
+    const e = g.get(k); e.npcs.push(s); e.count += pts(s.p).length;
+  }
+  return [...g.values()].sort((a,b)=>b.count-a.count);
+}
+
+function build(key){
+  const m = D.maps[key]; cur = key; dots = [];
+  document.body.dataset.map = key;
+  document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.map===key));
+  el("mapTitle").innerHTML = `<small>${FACTION[key]}</small>${esc(m.title)}`;
+  Object.values(layers).forEach(l=>map.removeLayer(l)); if (tileLayer) map.removeLayer(tileLayer); if (petHi) { map.removeLayer(petHi); petHi=null; }
+  selPet = null;
+
+  const S = 1024*m.grid;
+  tileLayer = L.layerGroup().addTo(map);
+  for (const t of m.tiles){
+    const [c,r] = t.split("_").map(Number);
+    const ov = L.imageOverlay("tiles/"+key+"_"+t+".jpg", [[-r*1024, c*1024],[-(r+1)*1024,(c+1)*1024]], {opacity:0, pane:"tiles"}).addTo(tileLayer);
+    masked(key,t).then(u=>{ ov.setUrl(u); ov.setOpacity(1); }).catch(()=>ov.setOpacity(1));
+  }
+  const bounds = L.latLngBounds([[-S,0],[0,S]]);
+  const land = L.latLngBounds(m.tiles.map(t=>{ const [c,r]=t.split("_").map(Number); return [[-r*1024,c*1024],[-(r+1)*1024,(c+1)*1024]]; }).flat());
+  // clear the previous map's limits first, otherwise they pull the new view off centre
+  map.setMaxBounds(null);
+  map.setMinZoom(-6);
+  map.invalidateSize();
+  const z = map.getBoundsZoom(land, false, L.point(20,20));
+  map.setView(land.getCenter(), z, {animate:false});
+  map.setMinZoom(z-0.5);
+  map.setMaxBounds(bounds.pad(0.25));
+
+  // bosses
+  const bl = L.layerGroup();
+  for (const b of D.bosses[key]||[]) {
+    const mk = L.marker(ll(m,b.x,b.y), {icon:L.divIcon({className:"", html:`<div class="bossic${b.fixed?" fixed":""}"></div>`, iconSize:[18,18], iconAnchor:[9,9]}), keyboard:true, title:nm(b.n), zIndexOffset:500});
+    mk.bindPopup(()=>popupBoss(b)); mk.bindTooltip(()=>esc(nm(b.n)), {direction:"top", offset:[0,-10]});
+    mk._ref = b; bl.addLayer(mk);
+  }
+  layers.boss = bl;
+  // kibelisks
+  const kl = L.layerGroup();
+  for (const k of D.kib[key]||[]) {
+    const mk = L.marker(ll(m,k.x,k.y), {icon:L.divIcon({className:"", html:'<div class="kibic"></div>', iconSize:[12,20], iconAnchor:[6,18]}), title:nm(k.n), zIndexOffset:300});
+    mk.bindPopup(()=>popupKib(k)); mk.bindTooltip(()=>esc(nm(k.n)), {direction:"top", offset:[0,-16]});
+    mk._ref = k; kl.addLayer(mk);
+  }
+  layers.kib = kl;
+  // gather
+  const gl = L.layerGroup(); const byKind = {};
+  for (const [id, list] of Object.entries(D.gather[key]||{})) {
+    const info = D.gk[id]; const kind = info.kind; const col = (GK[kind]||["",'#fff'])[1];
+    byKind[kind] = byKind[kind] || {n:0, layer:L.layerGroup()};
+    for (const p of pts(list)) {
+      const c = dot(ll(m,p[0],p[1]), {renderer, radius:4, color:"#0b1117", weight:1, fillColor:col, fillOpacity:.95});
+      c.bindPopup(()=>`<div class="pop"><div><span class="k">${esc(GK[kind]?GK[kind][0]:kind)}</span><b>${esc(nm(info.n))}</b><span class="c">x ${fmt(p[0])} y ${fmt(p[1])}</span></div></div>`);
+      c.bindTooltip(()=>esc(nm(info.n)));
+      byKind[kind].layer.addLayer(c); byKind[kind].n++;
+    }
+  }
+  layers.gather = gl;
+  const rows = el("gatherRows"); rows.innerHTML = ""; let gTotal = 0;
+  const kinds = Object.keys(byKind).sort((a,b)=>byKind[b].n-byKind[a].n);
+  for (const kind of kinds) {
+    gTotal += byKind[kind].n;
+    if (!hidden.has(kind)) gl.addLayer(byKind[kind].layer);
+    const lab = document.createElement("label"); lab.className="row";
+    lab.innerHTML = `<input type="checkbox" id="g_${kind}" ${hidden.has(kind)?"":"checked"}><span class="sw" style="background:${GK[kind]?GK[kind][1]:"#fff"}"></span>${esc(GK[kind]?GK[kind][0]:kind)}<span class="n">${byKind[kind].n}</span>`;
+    lab.querySelector("input").addEventListener("change", e=>{
+      if (e.target.checked){ hidden.delete(kind); gl.addLayer(byKind[kind].layer);} else { hidden.add(kind); gl.removeLayer(byKind[kind].layer);} store.set("hiddenKinds",[...hidden]);
+    });
+    rows.appendChild(lab);
+  }
+  if (!kinds.length) rows.innerHTML = '<p class="note" style="margin:4px">No gathering spots in the data for this map.</p>';
+  el("c_gather").textContent = gTotal || "";
+  // all pet spawns (faint)
+  const pl = L.layerGroup(); let pTotal = 0;
+  for (const s of D.spawns[key]) for (const p of pts(s.p)) {
+    pTotal++;
+    const c = dot(ll(m,p[0],p[1]), {renderer, radius:2.5, stroke:false, fillColor:"#c9a6ff", fillOpacity:.55});
+    c.bindPopup(()=>popupNpc(s,p)); pl.addLayer(c);
+  }
+  layers.pets = pl;
+  el("c_boss").textContent = (D.bosses[key]||[]).length;
+  el("c_kib").textContent = (D.kib[key]||[]).length;
+  el("c_pets").textContent = fmt(pTotal);
+  ["boss","kib","pets"].forEach(k=>{ if (el("L_"+k).checked) map.addLayer(layers[k]); });
+  map.addLayer(gl);
+  renderPets();
+  store.set("map", key);
+  if (location.hash !== "#"+key) history.replaceState(null, "", "#"+key);
+}
+
+function renderPets(){
+  const q = el("petq").value.trim().toLowerCase();
+  const list = el("petList"); list.innerHTML = "";
+  const groups = petGroups(cur).map(g=>{ const pet = g.pet && D.pets[g.pet];
+    return Object.assign(g, {type: pet ? (pet.c||"") : "", title: pet ? nm(pet.n) : (nm(g.npcs[0].n) || "NPC "+g.npcs[0].id)}); });
+  // type chips with counts for this map
+  const counts = {}; groups.forEach(g=>counts[g.type]=(counts[g.type]||0)+1);
+  const types = Object.keys(CAT).filter(t=>counts[t]);
+  if (petType!=="all" && !counts[petType]) petType = "all";
+  const chips = el("petTypes"); chips.innerHTML = "";
+  [["all","All",groups.length]].concat(types.map(t=>[t,CAT[t],counts[t]])).forEach(([t,label,n])=>{
+    const c = document.createElement("button"); c.type="button"; c.className="chip"; c.setAttribute("aria-pressed", petType===t);
+    c.innerHTML = `${t!=="all"?`<span class="sw" style="background:${CATC[t]}"></span>`:""}${esc(label)} <small>${n}</small>`;
+    c.onclick = ()=>{ petType = t; store.set("petType", t); renderPets(); };
+    chips.appendChild(c);
+  });
+  const order = Object.keys(CAT);
+  const rank = t => { const i = order.indexOf(t); return i<0 ? 99 : i; };
+  groups.sort(petSort==="name" ? (a,b)=>a.title.localeCompare(b.title)
+            : petSort==="type" ? (a,b)=>rank(a.type)-rank(b.type) || b.count-a.count
+            : (a,b)=>b.count-a.count);
+  let lastType = null;
+  for (const g of groups) {
+    const pet = g.pet && D.pets[g.pet];
+    const title = g.title;
+    const mons = g.npcs.map(s=>nm(s.n)).filter(Boolean);
+    if (petType!=="all" && g.type!==petType) continue;
+    if (q && !(title+" "+mons.join(" ")).toLowerCase().includes(q)) continue;
+    if (petSort==="type" && petType==="all" && g.type!==lastType) {
+      lastType = g.type; const h = document.createElement("h3");
+      h.innerHTML = `<span class="sw" style="background:${CATC[g.type]||CATC[""]};width:8px;height:8px;border:0"></span>${esc(CAT[g.type]||"Other")}`;
+      list.appendChild(h);
+    }
+    const b = document.createElement("button"); b.type="button"; b.className="pet"; b.setAttribute("aria-pressed", selPet===g.k);
+    b.innerHTML = `<span class="sw" style="background:${CATC[g.type]||CATC[""]}"></span><span><span style="display:block">${esc(title)}</span><span class="cat">${esc(pet?(CAT[pet.c]||pet.c||""):"monster")} · ${esc([...new Set(mons)].slice(0,2).join(", "))}${new Set(mons).size>2?" …":""}</span></span><span class="n">${g.count}</span>`;
+    b.addEventListener("click", ()=>highlight(g));
+    list.appendChild(b);
+  }
+}
+
+function highlight(g){
+  const m = D.maps[cur];
+  if (petHi) { map.removeLayer(petHi); petHi = null; }
+  if (selPet === g.k) { selPet = null; renderPets(); return; }
+  selPet = g.k; petHi = L.layerGroup().addTo(map);
+  const ls = [];
+  for (const s of g.npcs) for (const p of pts(s.p)) {
+    const at = ll(m,p[0],p[1]); ls.push(at);
+    dot(at, {renderer, radius:5, color:"#1a0f2e", weight:1.5, fillColor:"#c9a6ff", fillOpacity:1}).bindPopup(()=>popupNpc(s,p)).addTo(petHi);
+  }
+  if (ls.length) map.flyToBounds(L.latLngBounds(ls).pad(0.3), {maxZoom:0, duration:.6});
+  renderPets();
+}
+
+// search across the open map
+function search(){
+  const q = el("q").value.trim().toLowerCase(); const box = el("results");
+  if (q.length < 2) { box.hidden = true; return; }
+  const hits = [];
+  layers.boss.eachLayer(mk=>{ const n=nm(mk._ref.n); if (n.toLowerCase().includes(q)) hits.push({t:n, k:"Field boss", go:()=>{ if(!map.hasLayer(layers.boss)){el("L_boss").checked=true;map.addLayer(layers.boss);} map.flyTo(mk.getLatLng(), 0, {duration:.6}); setTimeout(()=>mk.openPopup(),650);} }); });
+  layers.kib.eachLayer(mk=>{ const n=nm(mk._ref.n); if (n.toLowerCase().includes(q)) hits.push({t:n, k:"Kibelisk", go:()=>{ if(!map.hasLayer(layers.kib)){el("L_kib").checked=true;map.addLayer(layers.kib);} map.flyTo(mk.getLatLng(), 0, {duration:.6}); setTimeout(()=>mk.openPopup(),650);} }); });
+  for (const g of petGroups(cur)) {
+    const pet = g.pet && D.pets[g.pet]; const pn = pet ? nm(pet.n) : null;
+    const mons = [...new Set(g.npcs.map(s=>nm(s.n)).filter(Boolean))];
+    const hitMon = mons.find(x=>x.toLowerCase().includes(q));
+    if ((pn && pn.toLowerCase().includes(q)) || hitMon) hits.push({t: hitMon && !(pn||"").toLowerCase().includes(q) ? hitMon : (pn||hitMon), k: pn ? "Pet · "+g.count+" spawns" : "Monster", go:()=>{ if (selPet===g.k) return; highlight(g);} });
+  }
+  box.innerHTML = hits.length ? "" : '<div class="hit" style="cursor:default;color:var(--muted)">Nothing on this map. Try another map.</div>';
+  hits.slice(0,40).forEach(h=>{ const b=document.createElement("button"); b.type="button"; b.className="hit"; b.innerHTML=`${esc(h.t)}<em>${esc(h.k)}</em>`; b.onclick=()=>{ box.hidden=true; h.go(); }; box.appendChild(b); });
+  box.hidden = false;
+}
+
+el("q").addEventListener("input", search);
+el("q").addEventListener("keydown", e=>{ if (e.key==="Escape"){ el("results").hidden=true; } if (e.key==="Enter"){ const f=el("results").querySelector("button.hit"); if(f) f.click(); }});
+document.addEventListener("click", e=>{ if (!e.target.closest(".tools")) el("results").hidden = true; });
+el("petq").addEventListener("input", renderPets);
+el("mkSize").value = mk;
+el("mkSize").addEventListener("input", e=>{ mk = Number(e.target.value); applySize(); store.set("mkSize", mk); });
+L.DomEvent.disableClickPropagation(document.querySelector(".sizer"));el("lang").addEventListener("change", e=>{ lang = e.target.value; store.set("lang", lang); renderPets(); search(); map.closePopup(); });
+["boss","kib","pets"].forEach(k=>el("L_"+k).addEventListener("change", e=>{ e.target.checked ? map.addLayer(layers[k]) : map.removeLayer(layers[k]); store.set("L_"+k, e.target.checked); }));
+["boss","kib","pets"].forEach(k=>{ const v = store.get("L_"+k, null); if (v !== null) el("L_"+k).checked = v; });
+document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click", ()=>{ el("q").value=""; el("results").hidden=true; el("petq").value=""; build(b.dataset.map); }));
+map.on("mousemove", e=>{ const w = toWorld(D.maps[cur], e.latlng); el("hud").textContent = `x ${fmt(w[0])}  y ${fmt(w[1])}`; });
+el("sheetBtn").addEventListener("click", ()=>{ const s=el("side"); const c=s.classList.toggle("collapsed"); el("sheetBtn").textContent = c?"Show panel":"Hide panel"; el("sheetBtn").setAttribute("aria-expanded", !c); setTimeout(()=>map.invalidateSize(),50); });
+new ResizeObserver(()=>map.invalidateSize()).observe(el("map"));
+
+window.addEventListener("hashchange", ()=>{ const k=location.hash.slice(1); if (D.maps[k] && k!==cur) build(k); });
+const start = (location.hash||"").slice(1);
+build(D.maps[start] ? start : store.get("map","verteron"));
+applySize();
+})();
+</script>
