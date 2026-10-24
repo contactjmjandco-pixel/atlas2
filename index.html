@@ -1,3 +1,10 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
 <title>Elyos Atlas</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +34,15 @@
 :root[data-theme="light"]{--panel:#f3efe6;--panel-2:#e9e3d6;--line:#d3cab8;--fg:#1f2329;--muted:#5d6670;--ink:#0e161e;color-scheme:light}
 body[data-map="altgard"]{--accent:#a993f0;--accent-ink:#120d22}
 body[data-map="abyss"]{--accent:#5fc0d8;--accent-ink:#06171c}
+body[data-map="dungeon"]{--accent:#e0905a;--accent-ink:#1d0e04}
+.dsel{width:100%;margin-top:6px}
+.pets .else{display:flex;flex-direction:column;align-items:flex-start;gap:3px;cursor:default}
+.pets .else .where{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+.pets .else .where button,.pets .else .where span{font:11px var(--f-body);padding:1px 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:none}
+.pets .else .where button{color:var(--fg);border-color:var(--accent);cursor:pointer}
+.pets .else .where button:hover{background:var(--panel-2)}
+.pets .else .where button:focus-visible{outline:2px solid #9b6cff;outline-offset:2px}
+.pets h3.sec{font-size:11px;color:var(--fg);margin-top:16px;border-top:1px solid var(--line);padding-top:10px}
 html,body{height:100%}
 body{background:var(--ink);color:var(--fg);font-family:var(--f-body);font-size:14px;overflow:hidden}
 .app{display:grid;grid-template-columns:clamp(420px,30vw,480px) 1fr;height:100%}
@@ -67,6 +83,12 @@ h2:first-child{margin-top:0}
 .sw.dia{border-radius:2px;transform:rotate(45deg);width:10px;height:10px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;column-gap:12px}
 .grid2 .row{min-width:0}
+.h2r{display:flex;align-items:center;gap:10px}
+.mini{font:600 10px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--fg);background:var(--panel-2);border:1px solid var(--line);border-radius:999px;padding:3px 9px;cursor:pointer}
+.mini:hover{border-color:#9b6cff}
+.mini:focus-visible{outline:2px solid #9b6cff;outline-offset:2px}
+.grid2 .gh{grid-column:1/-1;display:flex;justify-content:space-between;font:600 10px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:10px 4px 2px;padding-top:8px;border-top:1px solid var(--line)}
+.grid2 .gh span{font:11px var(--f-mono);letter-spacing:0}
 .pets{display:flex;flex-direction:column;gap:2px;max-height:none}
 .petbar{display:flex;gap:8px;align-items:flex-start;justify-content:space-between;margin-bottom:8px}
 .petbar select{padding:5px 8px;font-size:12px;flex:none}
@@ -89,6 +111,8 @@ h2:first-child{margin-top:0}
 .leaflet-container{background:var(--sea);font-family:var(--f-body)}
 .hud{position:absolute;z-index:900;right:calc(12px + env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));background:rgba(14,22,30,.85);color:#e6e1d6;border:1px solid #2a3846;border-radius:6px;padding:6px 10px;font:12px var(--f-mono);font-variant-numeric:tabular-nums;pointer-events:none}
 .mapwrap{position:relative;min-width:0}
+.credit{margin:18px 4px 0;font:11px/1.4 var(--f-body);color:var(--muted)}
+.credit a{color:inherit}
 .maptitle{position:absolute;z-index:900;left:20px;top:calc(16px + env(safe-area-inset-top,0px));pointer-events:none;font-family:var(--f-display);font-size:34px;color:#efe6cf;text-shadow:0 2px 12px rgba(0,0,0,.8);letter-spacing:.04em}
 .maptitle small{display:block;font:600 11px var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
 .leaflet-bar a{background:#141e28;color:#e6e1d6;border-color:#2a3846}
@@ -110,9 +134,14 @@ h2:first-child{margin-top:0}
 .sizer .dotS,.sizer .dotL{border-radius:50%;background:#c9a6ff;flex:none}
 .sizer .dotS{width:5px;height:5px}.sizer .dotL{width:11px;height:11px}
 @media (max-width:760px){.sizer input{width:110px}.sizer{bottom:12px}}
-.bossic{width:18px;height:18px;transform:rotate(45deg) scale(var(--mk,1));background:var(--boss);border:2px solid #2b0d06;box-shadow:0 0 0 2px rgba(239,106,76,.35),0 2px 6px rgba(0,0,0,.6);border-radius:3px}
-.bossic.fixed{background:#ffcf5a;border-color:#3a2a00;box-shadow:0 0 0 2px rgba(255,207,90,.35),0 2px 6px rgba(0,0,0,.6)}
-.kibic{width:12px;height:20px;background:linear-gradient(#bff6ee,var(--kib));clip-path:polygon(50% 0,100% 30%,80% 100%,20% 100%,0 30%);filter:drop-shadow(0 1px 2px #000)}
+/* gathering icons: sized from the marker-size slider, centred on the point */
+.gsw svg{display:block;width:100%;height:100%}
+.gsw{width:18px;height:18px;flex:none}
+.mk-svg{background:none;border:0}
+.mk-svg svg{display:block;overflow:visible;filter:drop-shadow(0 1px 2px rgba(0,0,0,.65))}
+.mk-svg.kib svg{filter:drop-shadow(0 0 4px rgba(95,211,196,.55)) drop-shadow(0 1px 2px rgba(0,0,0,.65))}
+.lsw{width:18px;height:18px;flex:none;display:grid;place-items:center}
+.lsw svg{max-width:18px;max-height:18px;display:block}
 .sheet-toggle{display:none}
 @media (max-width:760px){
   .app{grid-template-columns:1fr;grid-template-rows:1fr auto}
@@ -128,6 +157,7 @@ h2:first-child{margin-top:0}
 @media (prefers-reduced-motion:reduce){.leaflet-zoom-anim .leaflet-zoom-animated{transition:none!important}}
 </style>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><radialGradient id="gshine" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></radialGradient><linearGradient id="bossg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8a66"/><stop offset="1" stop-color="#c2361f"/></linearGradient><linearGradient id="bossgold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#c8901f"/></linearGradient><linearGradient id="kibg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eafffb"/><stop offset=".5" stop-color="#7fe3d6"/><stop offset="1" stop-color="#2a9c92"/></linearGradient></defs></svg>
 <div class="app">
   <aside id="side">
     <div class="brand">
@@ -140,6 +170,7 @@ h2:first-child{margin-top:0}
       <button type="button" data-map="altgard" aria-pressed="false">Altgard<small>Asmodian</small></button>
       <button type="button" data-map="abyss" aria-pressed="false">Abyss<small>Reshanta</small></button>
     </div>
+    <select id="dungeon" class="dsel" aria-label="Dungeon map"><option value="">Dungeons…</option></select>
     <div class="tools">
       <input type="search" id="q" placeholder="Search boss, place, monster, pet…" autocomplete="off" aria-label="Search">
       <select id="lang" aria-label="Language for game names">
@@ -150,23 +181,23 @@ h2:first-child{margin-top:0}
     </div>
     <div class="scroll">
       <h2>Layers</h2>
-      <label class="row"><input type="checkbox" id="L_boss" checked><span class="sw dia" style="background:var(--boss)"></span>Field bosses<span class="n" id="c_boss"></span></label>
-      <label class="row"><input type="checkbox" id="L_kib" checked><span class="sw" style="background:var(--kib)"></span>Kibelisks (teleport)<span class="n" id="c_kib"></span></label>
-      <label class="row"><input type="checkbox" id="L_pets"><span class="sw" style="background:var(--pet)"></span>Enemy Monster<span class="n" id="c_pets"></span></label>
-      <h2>Gathering <span id="c_gather"></span></h2>
+      <label class="row"><input type="checkbox" id="L_boss" checked><span class="lsw" id="swBoss"></span>Field bosses<span class="n" id="c_boss"></span></label>
+      <label class="row"><input type="checkbox" id="L_kib" checked><span class="lsw" id="swKib"></span>Kibelisks (teleport)<span class="n" id="c_kib"></span></label>
+      <label class="row"><input type="checkbox" id="L_pets"><span class="lsw"><svg viewBox="0 0 18 18" width="18" height="18" aria-hidden="true"><circle cx="5.5" cy="6" r="2.6" fill="#e8875a"/><circle cx="12.5" cy="6" r="2.6" fill="#6fb8ff"/><circle cx="5.5" cy="12.5" r="2.6" fill="#7bd36b"/><circle cx="12.5" cy="12.5" r="2.6" fill="#c9a6ff"/></svg></span>Enemy Monster<span class="n" id="c_pets"></span></label>
+      <h2>Gathering <span class="h2r"><button type="button" class="mini" id="gToggle">Hide all</button><span id="c_gather"></span></span></h2>
       <div class="grid2" id="gatherRows"></div>
       <h2>Pet monsters <span>click to highlight</span></h2>
       <input type="search" id="petq" placeholder="Filter pets…" autocomplete="off" aria-label="Filter pets" style="width:100%;margin-bottom:8px">
       <div class="petbar">
         <div class="chips" id="petTypes" role="group" aria-label="Pet type"></div>      </div>
       <div class="pets" id="petList"></div>
+      <p class="credit">Some gathering points: <a href="https://github.com/aion2-interactive-map/aion2-interactive-map" target="_blank" rel="noopener">aion2-interactive-map</a> (tc-imba), <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>, rescaled.</p>
     </div>
   </aside>
   <div class="mapwrap">
     <div id="map" aria-label="Map"></div>
     <div class="maptitle" id="mapTitle"><small>Elyos</small>Verteron</div>
-    <div class="hud" id="hud">x —  y —</div>
-    <label class="sizer" for="mkSize"><span>Marker size</span><span class="dotS"></span><input type="range" id="mkSize" min="1" max="5" step="0.1" value="2"><span class="dotL"></span><output id="mkOut">2.0×</output></label>
+    <div class="hud" id="hud">x —  y —</div>    <label class="sizer" for="mkSize"><span>Marker size</span><span class="dotS"></span><input type="range" id="mkSize" min="1" max="5" step="0.1" value="2"><span class="dotL"></span><output id="mkOut">2.0×</output></label>
   </div>
 </div>
 
@@ -175,9 +206,105 @@ h2:first-child{margin-top:0}
 <script>
 (function(){
 const D = window.AION;
+// gemstones, herbs and food get one row per material, grouped under their parent kind
+const SUB = {
+  Sapphire:["Gemstone","#4f8dff"], Diamond:["Gemstone","#dfe8f0"], Ruby:["Gemstone","#ff4d6a"],
+  Aria:["Herb","#7bd36b"], Targena:["Herb","#3fc4a0"], Azpha:["Herb","#b4dc4a"], Calendula:["Herb","#f0c94a"],
+  Mela:["Food","#ff9a4d"], Coriolus:["Food","#c98a5a"], Inina:["Food","#ffd45c"], Cypri:["Food","#ff6f61"], Kukuru:["Food","#e88bd0"],
+  Raydam:["Food","#ff9a4d"], Morfa:["Food","#c98a5a"], Conide:["Food","#ffd45c"], Pujery:["Food","#ff6f61"], Ohkra:["Food","#e88bd0"]
+};
 const FACTION = {verteron:"Elyos", altgard:"Asmodian", abyss:"Reshanta"};
 const GK = {Od:["Odyle","#7fd0ff"],Ore:["Ore","#c7c9cf"],Wood:["Wood","#b5874f"],Herb:["Herbs","#7bd36b"],Food:["Food","#ffb35c"],
-  Gemstone:["Gemstone","#ff6fb4"],Cotton:["Cotton","#f2f0e6"],Fragment:["Empyrean Trace","#ffe27a"],Cube:["Hidden Cube","#9f8cff"]};
+  Gemstone:["Gemstone","#ff6fb4"],Sapphire:["Sapphire","#4f8dff"],Diamond:["Diamond","#8fb6d2"],Ruby:["Ruby","#ff4d6a"],Cotton:["Cotton","#b9b2a2"],Fragment:["Empyrean Trace","#ffe27a"],Cube:["Hidden Cube","#9f8cff"]};
+const PARENT = {};
+for (const [name,[parent,col]] of Object.entries(SUB)) { PARENT[name] = parent; if (!GK[name]) GK[name] = [name, col]; }
+for (const g of Object.values(D.gk)) { const en = g.n && g.n.en; if (SUB[en] && SUB[en][0] === g.kind) g.kind = en; }
+const GROUPS = [["Gemstone","Gemstones"],["Herb","Herbs"],["Food","Food"]];
+// Material icons: a dark medallion with a thin gold rim, a coloured face and one glyph per material,
+// drawn on a 24-unit grid. Cream shapes carry the form; a translucent dark line carries the detail.
+const C = "#fbf6ea", K = 'stroke="rgba(25,18,10,.55)" stroke-width="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round"';
+const GLYPH = {
+  // energy and minerals
+  Od:   `<path d="M12 5c2.7 3.4 4.7 5.9 4.7 8.6a4.7 4.7 0 0 1-9.4 0C7.3 10.9 9.3 8.4 12 5z" fill="${C}"/><path d="M10 13.6a2.2 2.2 0 0 0 2.4 2.3M13.4 9.2l.9 1.3" ${K}/>`,
+  Ore:  `<path d="M6.6 15.2 8.4 9.4l4.6-2 4.2 3.1-.7 5.3-5.2 1.9z" fill="${C}"/><path d="M8.4 9.4l3.4 3.3 5.4-2.2M11.8 12.7l-.5 4.3M11.8 12.7l4.7 3.1" ${K}/><path d="M16.6 6.2v2.4M15.4 7.4h2.4" stroke="${C}" stroke-width=".9" stroke-linecap="round"/>`,
+  Wood: `<rect x="5.6" y="9.4" width="10.6" height="5.6" rx="2.8" fill="${C}"/><ellipse cx="16" cy="12.2" rx="2.4" ry="2.8" fill="#e8d6b4"/><ellipse cx="16" cy="12.2" rx="1.3" ry="1.6" ${K}/><path d="M7.6 11.2h5M8.6 13.2h4.4" ${K}/>`,
+  // gemstones: three different cuts
+  Ruby:     `<path d="M8.2 7.6h7.6l2.4 3.6L12 18.2 5.8 11.2z" fill="${C}"/><path d="M5.8 11.2h12.4M8.2 7.6l2 3.6L12 7.6l1.8 3.6 2-3.6M10.2 11.2 12 18.2l1.8-7" ${K}/>`,
+  Sapphire: `<ellipse cx="12" cy="12" rx="4.6" ry="6.2" fill="${C}"/><ellipse cx="12" cy="12" rx="2.2" ry="3.2" ${K}/><path d="M12 5.8v3M12 15.2v3M7.4 12h2.4M14.2 12h2.4" ${K}/>`,
+  Diamond:  `<path d="M12 5.6l6 6.4-6 6.4-6-6.4z" fill="${C}"/><path d="M6 12h12M12 5.6 9.4 12 12 18.4 14.6 12z" ${K}/>`,
+  Gemstone: `<path d="M12 5.6l6 6.4-6 6.4-6-6.4z" fill="${C}"/><path d="M6 12h12" ${K}/>`,
+  // herbs
+  Aria:      `<g fill="${C}"><circle cx="12" cy="8.3" r="2.4"/><circle cx="15.5" cy="10.9" r="2.4"/><circle cx="14.2" cy="15" r="2.4"/><circle cx="9.8" cy="15" r="2.4"/><circle cx="8.5" cy="10.9" r="2.4"/></g><circle cx="12" cy="12" r="1.7" fill="#f2c94c"/>`,
+  Targena:   `<path d="M12 18.6C6.8 15.2 7.2 9 12 5.4c4.8 3.6 5.2 9.8 0 13.2z" fill="${C}"/><path d="M12 18V8.4M12 11.6l-2.3-1.8M12 14.6l2.5-1.9M12 16.6l-1.8-1.3" ${K}/>`,
+  Azpha:     `<path d="M12 18.4V9.2M12 12.6l3.4-2.6M12 15l-3.2-2.2" stroke="${C}" stroke-width="1.4" fill="none" stroke-linecap="round"/><g fill="${C}"><circle cx="12" cy="7.6" r="2"/><circle cx="16.4" cy="9.2" r="1.8"/><circle cx="7.8" cy="11.8" r="1.8"/></g>`,
+  Calendula: `<g fill="${C}">${[0,45,90,135,180,225,270,315].map(a=>`<ellipse cx="12" cy="7.4" rx="1.3" ry="2.7" transform="rotate(${a} 12 12)"/>`).join("")}</g><circle cx="12" cy="12" r="2.3" fill="#e8913a"/>`,
+  Herb:      `<path d="M12 18.6C6.8 15.2 7.2 9 12 5.4c4.8 3.6 5.2 9.8 0 13.2z" fill="${C}"/>`,
+  // food: fruit, mushroom, grain, shellfish, meat (Elyos and Asmodian pairs share a shape)
+  Mela:     `<path d="M12 8.6c-1.4-1-4.8-1.2-5 2.6-.2 3.6 2.4 7 5 6.2 2.6.8 5.2-2.6 5-6.2-.2-3.8-3.6-3.6-5-2.6z" fill="${C}"/><path d="M12 8.6c0-1.6.5-2.6 1.4-3.2" stroke="${C}" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M13 6.6c1.4-1.2 3-.9 3.5-.6-.5 1.4-2.1 1.9-3.5.6z" fill="${C}"/><path d="M9.2 11.2c.2-.9.7-1.4 1.3-1.6" ${K}/>`,
+  Coriolus: `<path d="M5.8 12.2C6 8.4 8.8 6.4 12 6.4s6 2 6.2 5.8z" fill="${C}"/><path d="M10.4 12.2h3.2l.5 5.2a1 1 0 0 1-1 1.1h-2.2a1 1 0 0 1-1-1.1z" fill="${C}"/><circle cx="9.6" cy="9.4" r=".9" fill="rgba(25,18,10,.45)"/><circle cx="13.6" cy="8.6" r=".8" fill="rgba(25,18,10,.45)"/><circle cx="15.4" cy="10.6" r=".6" fill="rgba(25,18,10,.45)"/>`,
+  Inina:    `<path d="M12 18.6V6.6" stroke="${C}" stroke-width="1.2" stroke-linecap="round"/><g fill="${C}">${[7.6,10,12.4,14.8].map(y=>`<ellipse cx="10.4" cy="${y}" rx="1.1" ry="1.9" transform="rotate(-35 10.4 ${y})"/><ellipse cx="13.6" cy="${y}" rx="1.1" ry="1.9" transform="rotate(35 13.6 ${y})"/>`).join("")}</g>`,
+  Cypri:    `<path d="M12 17.8 6.4 11.4c.6-3.4 3-5 5.6-5s5 1.6 5.6 5z" fill="${C}"/><path d="M12 17.4V7M12 17.4 9 7.8M12 17.4l3-9.6M12 17.4 7.2 9.6M12 17.4l4.8-7.8" ${K}/><rect x="10.4" y="16.6" width="3.2" height="1.8" rx=".6" fill="${C}"/>`,
+  Kukuru:   `<path d="M15.2 5.8c2.8.2 4 3 2.8 5.2-.9 1.6-2.8 2.4-4.6 2l-2.6 2.6-1.8-1.8 2.6-2.6c-.5-1.8.3-3.8 1.9-4.8.5-.4 1.1-.6 1.7-.6z" fill="${C}"/><circle cx="8.2" cy="16.6" r="1.6" fill="${C}"/><circle cx="7" cy="15.2" r="1.3" fill="${C}"/><path d="M14.2 8.2c.6-.5 1.4-.7 2-.5" ${K}/>`,
+  Food:     `<circle cx="12" cy="13" r="5" fill="${C}"/>`,
+  // the rest
+  Cotton:   `<path d="M8 16.8a3 3 0 0 1-.4-6 3.6 3.6 0 0 1 6.8-1.4 3.2 3.2 0 0 1 2.1 7.4z" fill="${C}"/><path d="M10 13.4c.8-.6 1.8-.6 2.6 0" ${K}/>`,
+  Cube:     `<path d="M12 5.4l6 3.3v6.6L12 18.6l-6-3.3V8.7z" fill="${C}"/><path d="M12 5.4l6 3.3-6 3.3-6-3.3z" fill="#ffffff"/><path d="M6 8.7l6 3.3 6-3.3M12 12v6.6" ${K}/><path d="M18.6 5v2M17.6 6h2" stroke="${C}" stroke-width=".8" stroke-linecap="round"/>`,
+  Fragment: `<path d="M12 4.6l1.5 5.9 5.9 1.5-5.9 1.5L12 19.4l-1.5-5.9L4.6 12l5.9-1.5z" fill="${C}"/><path d="M17.2 6.2l.5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5z" fill="${C}"/><circle cx="12" cy="12" r="1.2" fill="#c08a1e"/>`
+};
+// Field boss: a horned shield with a skull; bosses on a fixed schedule are gold with a clock badge.
+function bossSvg(fixed){
+  const ink = "#1a0d08";
+  return `<svg viewBox="0 0 24 26" width="20" height="22" aria-hidden="true">
+    <path d="M6.4 8.2C4 5.6 4.2 3 5.6 1.6c.4 2.4 1.8 3.8 3.8 4.6zM17.6 8.2c2.4-2.6 2.2-5.2.8-6.6-.4 2.4-1.8 3.8-3.8 4.6z" fill="#efe3c6" stroke="${ink}" stroke-width="1.1" stroke-linejoin="round"/>
+    <path d="M12 3.6l7.4 2.6v7c0 5-3.6 8.6-7.4 10.2-3.8-1.6-7.4-5.2-7.4-10.2v-7z" fill="url(#${fixed?"bossgold":"bossg"})" stroke="${ink}" stroke-width="1.4" stroke-linejoin="round"/>
+    <path d="M12 8.4c2.2 0 3.6 1.5 3.6 3.4 0 1.3-.7 2.2-1.6 2.7v1.6h-4v-1.6c-.9-.5-1.6-1.4-1.6-2.7 0-1.9 1.4-3.4 3.6-3.4z" fill="#fbf6ea"/>
+    <circle cx="10.6" cy="11.8" r="1" fill="${ink}"/><circle cx="13.4" cy="11.8" r="1" fill="${ink}"/><path d="M11 15.2v.9M12 15.2v.9M13 15.2v.9" stroke="${ink}" stroke-width=".6"/>
+    ${fixed?`<circle cx="19.4" cy="20.6" r="3.8" fill="#141c24" stroke="#ffd36b" stroke-width="1.1"/><path d="M19.4 18.6v2.1l1.5 1" stroke="#ffd36b" stroke-width="1" fill="none" stroke-linecap="round"/>`:""}
+  </svg>`;
+}
+// Kibelisk: a teal crystal obelisk with a black outline and a faint rune
+const KIB_SVG = `<svg viewBox="0 0 18 30" width="18" height="30" aria-hidden="true">
+  <path d="M9 1.2l5.6 6.6-1.8 18.6H5.2L3.4 7.8z" fill="url(#kibg)" stroke="#000" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M9 1.2v25.2M3.4 7.8 9 10.4l5.6-2.6" stroke="rgba(0,40,40,.35)" stroke-width=".7" fill="none"/>
+  <path d="M9 13.2v6.4M7.2 15.4h3.6" stroke="#ffffff" stroke-width="1" stroke-linecap="round" opacity=".85"/>
+  <path d="M2.6 26.2h12.8l1 2.6H1.6z" fill="#2c3a3c" stroke="#000" stroke-width="1.2" stroke-linejoin="round"/>
+</svg>`;
+// Asmodian food shares the Elyos shapes
+Object.assign(GLYPH, {Raydam:GLYPH.Mela, Morfa:GLYPH.Coriolus, Conide:GLYPH.Inina, Pujery:GLYPH.Cypri, Ohkra:GLYPH.Kukuru});
+function gicon(kind){
+  const col = (GK[kind]||["","#cfd3d8"])[1];
+  return `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.4" fill="#0f151b"/><circle cx="12" cy="12" r="10.4" fill="none" stroke="#c9a75a" stroke-width="1"/><circle cx="12" cy="12" r="9.3" fill="${col}"/><circle cx="12" cy="12" r="9.3" fill="url(#gshine)"/>${GLYPH[kind]||GLYPH[PARENT[kind]]||`<circle cx="12" cy="12" r="3" fill="${C}"/>`}</svg>`;
+}
+// Gathering icons are stamped onto the shared map canvas instead of being one page element each,
+// so thousands of them pan and zoom smoothly. Each kind is rasterised once into a small bitmap.
+const SHINE = '<defs><radialGradient id="s" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></radialGradient></defs>';
+const gBitmap = {};
+function gBitmapFor(kind){
+  if (gBitmap[kind]) return gBitmap[kind];
+  const b = gBitmap[kind] = {ready:false, canvas:document.createElement("canvas")};
+  b.canvas.width = b.canvas.height = 112;   // sharp up to the largest marker size
+  const svg = gicon(kind).replace("<svg ", '<svg xmlns="http://www.w3.org/2000/svg" width="112" height="112" ').replace("url(#gshine)", "url(#s)").replace("<circle", SHINE + "<circle");
+  const img = new Image();
+  img.onload = () => {
+    const g = b.canvas.getContext("2d");
+    g.shadowColor = "rgba(0,0,0,.55)"; g.shadowBlur = 6; g.shadowOffsetY = 2;
+    g.drawImage(img, 6, 4, 100, 100);
+    b.ready = true;
+    if (renderer && renderer._map) renderer._redraw();
+  };
+  img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  return b;
+}
+const IconDot = L.CircleMarker.extend({
+  _updatePath(){
+    const r = this._renderer;
+    if (!r._drawing || this._empty()) return;
+    const b = gBitmapFor(this.options.kind);
+    if (!b.ready) return;
+    const p = this._point, s = this._radius * 2 * 112/100;
+    r._ctx.drawImage(b.canvas, p.x - s/2, p.y - s/2 + s*2/112, s, s);   // icon sits 2px above the bitmap centre
+  }
+});
 const CAT = {Feral:"Fera",Intellect:"Cogni",Nature:"Natura",Trans:"Varian",Special:"Special"};
 const CATC = {Feral:"#e8875a",Nature:"#7bd36b",Intellect:"#6fb8ff",Trans:"#c9a6ff",Special:"#ffd36b","":"#93a0ad"};
 const DAYS = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
@@ -190,13 +317,15 @@ const petSort = "type";   // the list is always grouped by type, most spawns fir
 let cur = null, map, layers = {}, tileLayer, maskCache = {}, selPet = null, petHi = null, renderer;
 // marker size: every dot keeps its base radius so the slider can scale it
 let mk = Math.min(5, Math.max(1, Number(store.get("mkSize", 2)) || 2)), dots = [];
-function dot(at, o){ const r = o.radius; o.radius = r*mk; const c = L.circleMarker(at, o); c._baseR = r; dots.push(c); return c; }
+function dot(at, o, Cls = L.CircleMarker){ const r = o.radius; o.radius = r*mk; const c = new Cls(at, o); c._baseR = r; dots.push(c); return c; }
 function applySize(){
   dots.forEach(c=>c.setRadius(c._baseR*mk));
   document.documentElement.style.setProperty("--mk", mk);
   el("mkOut").textContent = mk.toFixed(1)+"×";
 }
-const hidden = new Set(store.get("hiddenKinds", ["Cube","Fragment"]));   // the two densest kinds start hidden
+// every gathering kind starts visible; only kinds the viewer switches off are remembered
+const hidden = new Set(store.get("hiddenGather", []));
+const saveKinds = () => store.set("hiddenGather", [...hidden]);
 const el = id => document.getElementById(id);
 el("lang").value = lang;
 
@@ -238,7 +367,7 @@ function popupBoss(b){
 function popupKib(k){ return `<div class="pop"><div><span class="k">Kibelisk</span><b>${esc(nm(k.n))}</b><span class="c">x ${fmt(k.x)} y ${fmt(k.y)}</span></div></div>`; }
 function popupNpc(s, p){
   const pet = s.pet && D.pets[s.pet];
-  return `<div class="pop"><div><span class="k">Pet monster</span><b>${esc(nm(s.n)||"NPC "+s.id)}</b>${pet?`<span class="c" style="color:#c9a6ff">Pet:${esc(nm(pet.n))}</span>`:""}<span class="c">NPC ${s.id} · x ${fmt(p[0])} y ${fmt(p[1])}</span></div></div>`;
+  return `<div class="pop"><div><span class="k">Pet monster</span><b>${esc(nm(s.n)||"NPC "+s.id)}</b>${pet?`<span class="c" style="color:#c9a6ff">Pet: ${esc(nm(pet.n))}</span>`:""}<span class="c">NPC ${s.id} · x ${fmt(p[0])} y ${fmt(p[1])}</span></div></div>`;
 }
 
 function petGroups(key){
@@ -253,21 +382,23 @@ function petGroups(key){
 
 function build(key){
   const m = D.maps[key]; cur = key; dots = [];
-  document.body.dataset.map = key;
+  document.body.dataset.map = m.dungeon ? "dungeon" : key;
   document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.map===key));
-  el("mapTitle").innerHTML = `<small>${FACTION[key]}</small>${esc(m.title)}`;
+  el("dungeon").value = m.dungeon ? key : "";
+  el("mapTitle").innerHTML = `<small>${m.dungeon ? "Dungeon" : FACTION[key]}</small>${esc(m.title)}`;
   Object.values(layers).forEach(l=>map.removeLayer(l)); if (tileLayer) map.removeLayer(tileLayer); if (petHi) { map.removeLayer(petHi); petHi=null; }
   selPet = null;
 
-  const S = 1024*m.grid;
+  const T = m.tile || 1024, S = T*m.grid;   // world maps use 1024 px tiles, dungeon maps 2048
+  const tileBox = t => { const [c,r] = t.split("_").map(Number); return [[-r*T, c*T],[-(r+1)*T,(c+1)*T]]; };
   tileLayer = L.layerGroup().addTo(map);
   for (const t of m.tiles){
-    const [c,r] = t.split("_").map(Number);
-    const ov = L.imageOverlay("tiles/"+key+"_"+t+".jpg", [[-r*1024, c*1024],[-(r+1)*1024,(c+1)*1024]], {opacity:0, pane:"tiles"}).addTo(tileLayer);
+    const ov = L.imageOverlay("tiles/"+key+"_"+t+".jpg", tileBox(t), {opacity:0, pane:"tiles"}).addTo(tileLayer);
+    if (m.masked === false) { ov.setOpacity(1); continue; }   // these dungeon pictures have no sea to cut away
     masked(key,t).then(u=>{ ov.setUrl(u); ov.setOpacity(1); }).catch(()=>ov.setOpacity(1));
   }
   const bounds = L.latLngBounds([[-S,0],[0,S]]);
-  const land = L.latLngBounds(m.tiles.map(t=>{ const [c,r]=t.split("_").map(Number); return [[-r*1024,c*1024],[-(r+1)*1024,(c+1)*1024]]; }).flat());
+  const land = L.latLngBounds(m.tiles.map(tileBox).flat());
   // clear the previous map's limits first, otherwise they pull the new view off centre
   map.setMaxBounds(null);
   map.setMinZoom(-6);
@@ -280,7 +411,7 @@ function build(key){
   // bosses
   const bl = L.layerGroup();
   for (const b of D.bosses[key]||[]) {
-    const mk = L.marker(ll(m,b.x,b.y), {icon:L.divIcon({className:"", html:`<div class="bossic${b.fixed?" fixed":""}"></div>`, iconSize:[18,18], iconAnchor:[9,9]}), keyboard:true, title:nm(b.n), zIndexOffset:500});
+    const mk = L.marker(ll(m,b.x,b.y), {icon:L.divIcon({className:"mk-svg", html:bossSvg(!!b.fixed), iconSize:[20,22], iconAnchor:[10,12]}), keyboard:true, title:nm(b.n), zIndexOffset:500});
     mk.bindPopup(()=>popupBoss(b)); mk.bindTooltip(()=>esc(nm(b.n)), {direction:"top", offset:[0,-10]});
     mk._ref = b; bl.addLayer(mk);
   }
@@ -288,7 +419,7 @@ function build(key){
   // kibelisks
   const kl = L.layerGroup();
   for (const k of D.kib[key]||[]) {
-    const mk = L.marker(ll(m,k.x,k.y), {icon:L.divIcon({className:"", html:'<div class="kibic"></div>', iconSize:[12,20], iconAnchor:[6,18]}), title:nm(k.n), zIndexOffset:300});
+    const mk = L.marker(ll(m,k.x,k.y), {icon:L.divIcon({className:"mk-svg kib", html:KIB_SVG, iconSize:[18,30], iconAnchor:[9,28]}), title:nm(k.n), zIndexOffset:300});
     mk.bindPopup(()=>popupKib(k)); mk.bindTooltip(()=>esc(nm(k.n)), {direction:"top", offset:[0,-16]});
     mk._ref = k; kl.addLayer(mk);
   }
@@ -299,7 +430,7 @@ function build(key){
     const info = D.gk[id]; const kind = info.kind; const col = (GK[kind]||["",'#fff'])[1];
     byKind[kind] = byKind[kind] || {n:0, layer:L.layerGroup()};
     for (const p of pts(list)) {
-      const c = dot(ll(m,p[0],p[1]), {renderer, radius:4, color:"#0b1117", weight:1, fillColor:col, fillOpacity:.95});
+      const c = dot(ll(m,p[0],p[1]), {renderer, radius:5.5, kind}, IconDot);
       c.bindPopup(()=>`<div class="pop"><div><span class="k">${esc(GK[kind]?GK[kind][0]:kind)}</span><b>${esc(nm(info.n))}</b><span class="c">x ${fmt(p[0])} y ${fmt(p[1])}</span></div></div>`);
       c.bindTooltip(()=>esc(nm(info.n)));
       byKind[kind].layer.addLayer(c); byKind[kind].n++;
@@ -307,26 +438,53 @@ function build(key){
   }
   layers.gather = gl;
   const rows = el("gatherRows"); rows.innerHTML = ""; let gTotal = 0;
-  const kinds = Object.keys(byKind).sort((a,b)=>byKind[b].n-byKind[a].n);
+  // single kinds first, then each split group under its own small heading
+  const groupOf = k => PARENT[k] || "";
+  const order = ["", ...GROUPS.map(g=>g[0])];
+  const kinds = Object.keys(byKind).sort((a,b)=>order.indexOf(groupOf(a))-order.indexOf(groupOf(b)) || byKind[b].n-byKind[a].n);
+  let lastGroup = "";
   for (const kind of kinds) {
+    const grp = groupOf(kind);
+    if (grp && grp !== lastGroup) {
+      const h = document.createElement("h3"); h.className = "gh";
+      const n = kinds.filter(k=>groupOf(k)===grp).reduce((s,k)=>s+byKind[k].n,0);
+      h.innerHTML = `${esc(GROUPS.find(g=>g[0]===grp)[1])}<span>${n}</span>`;
+      rows.appendChild(h);
+    }
+    lastGroup = grp;
     gTotal += byKind[kind].n;
     if (!hidden.has(kind)) gl.addLayer(byKind[kind].layer);
     const lab = document.createElement("label"); lab.className="row";
-    lab.innerHTML = `<input type="checkbox" id="g_${kind}" ${hidden.has(kind)?"":"checked"}><span class="sw" style="background:${GK[kind]?GK[kind][1]:"#fff"}"></span>${esc(GK[kind]?GK[kind][0]:kind)}<span class="n">${byKind[kind].n}</span>`;
+    lab.innerHTML = `<input type="checkbox" id="g_${kind}" ${hidden.has(kind)?"":"checked"}><span class="gsw">${gicon(kind)}</span>${esc(GK[kind]?GK[kind][0]:kind)}<span class="n">${byKind[kind].n}</span>`;
     lab.querySelector("input").addEventListener("change", e=>{
-      if (e.target.checked){ hidden.delete(kind); gl.addLayer(byKind[kind].layer);} else { hidden.add(kind); gl.removeLayer(byKind[kind].layer);} store.set("hiddenKinds",[...hidden]);
+      if (e.target.checked){ hidden.delete(kind); gl.addLayer(byKind[kind].layer);} else { hidden.add(kind); gl.removeLayer(byKind[kind].layer);} saveKinds();
     });
     rows.appendChild(lab);
   }
   if (!kinds.length) rows.innerHTML = '<p class="note" style="margin:4px">No gathering spots in the data for this map.</p>';
   el("c_gather").textContent = gTotal || "";
+  // one button hides every gathering kind, or shows them all again
+  const gBtn = el("gToggle");
+  const syncBtn = () => { gBtn.textContent = kinds.some(k=>!hidden.has(k)) ? "Hide all" : "Show all"; };
+  gBtn.hidden = !kinds.length;
+  gBtn.onclick = () => {
+    const show = !kinds.some(k=>!hidden.has(k));
+    for (const k of kinds) {
+      const box = el("g_"+k);
+      if (show) { hidden.delete(k); gl.addLayer(byKind[k].layer); } else { hidden.add(k); gl.removeLayer(byKind[k].layer); }
+      if (box) box.checked = show;
+    }
+    saveKinds(); syncBtn();
+  };
+  rows.querySelectorAll("input").forEach(i=>i.addEventListener("change", syncBtn));
+  syncBtn();
   // all pet spawns (faint)
   const pl = L.layerGroup(); let pTotal = 0;
-  for (const s of D.spawns[key]) for (const p of pts(s.p)) {
+  for (const s of D.spawns[key]) { const col = petColor(s); for (const p of pts(s.p)) {
     pTotal++;
-    const c = dot(ll(m,p[0],p[1]), {renderer, radius:2.5, stroke:false, fillColor:"#c9a6ff", fillOpacity:.55});
+    const c = dot(ll(m,p[0],p[1]), {renderer, radius:2.5, color:"#0b1117", weight:.6, fillColor:col, fillOpacity:.8});
     c.bindPopup(()=>popupNpc(s,p)); pl.addLayer(c);
-  }
+  } }
   layers.pets = pl;
   el("c_boss").textContent = (D.bosses[key]||[]).length;
   el("c_kib").textContent = (D.kib[key]||[]).length;
@@ -338,17 +496,38 @@ function build(key){
   if (location.hash !== "#"+key) history.replaceState(null, "", "#"+key);
 }
 
+// where every pet spawns, over all maps on this page: pet id -> [{key, count}]
+const PET_MAPS = {};
+for (const [key, list] of Object.entries(D.spawns)) for (const s of list) if (s.pet) {
+  const arr = PET_MAPS[s.pet] = PET_MAPS[s.pet] || [];
+  let e = arr.find(x=>x.key===key); if (!e) arr.push(e = {key, count:0});
+  e.count += pts(s.p).length;
+}
+Object.values(PET_MAPS).forEach(a=>a.sort((x,y)=>y.count-x.count));
+const placeLabel = s => s.replace(" ()", "");
+
+// open another map and highlight one pet there
+function goToPet(key, petId){
+  el("q").value = ""; el("results").hidden = true;
+  if (cur !== key) build(key);
+  const g = petGroups(key).find(x=>x.k==="p"+petId);
+  if (g && selPet !== g.k) highlight(g);
+}
+
 function renderPets(){
   const q = el("petq").value.trim().toLowerCase();
   const list = el("petList"); list.innerHTML = "";
   const groups = petGroups(cur).map(g=>{ const pet = g.pet && D.pets[g.pet];
     return Object.assign(g, {type: pet ? (pet.c||"") : "", title: pet ? nm(pet.n) : (nm(g.npcs[0].n) || "NPC "+g.npcs[0].id)}); });
-  // type chips with counts for this map
-  const counts = {}; groups.forEach(g=>counts[g.type]=(counts[g.type]||0)+1);
+  // pets the game has that do not spawn on this map
+  const here = new Set(groups.filter(g=>g.pet).map(g=>String(g.pet)));
+  const away = Object.entries(D.pets).filter(([id])=>!here.has(id)).map(([id,p])=>({id, type:p.c||"", title:nm(p.n)||("Pet "+id), maps:(PET_MAPS[id]||[]).filter(x=>x.key!==cur), other:(D.petElse&&D.petElse[id])||[]}));
+  // type chips count every pet the game has
+  const counts = {}; Object.values(D.pets).forEach(p=>counts[p.c||""]=(counts[p.c||""]||0)+1);
   const types = Object.keys(CAT).filter(t=>counts[t]);
   if (petType!=="all" && !counts[petType]) petType = "all";
   const chips = el("petTypes"); chips.innerHTML = "";
-  [["all","All",groups.length]].concat(types.map(t=>[t,CAT[t],counts[t]])).forEach(([t,label,n])=>{
+  [["all","All",Object.keys(D.pets).length]].concat(types.map(t=>[t,CAT[t],counts[t]])).forEach(([t,label,n])=>{
     const c = document.createElement("button"); c.type="button"; c.className="chip"; c.setAttribute("aria-pressed", petType===t);
     c.innerHTML = `${t!=="all"?`<span class="sw" style="background:${CATC[t]}"></span>`:""}${esc(label)} <small>${n}</small>`;
     c.onclick = ()=>{ petType = t; store.set("petType", t); renderPets(); };
@@ -360,6 +539,11 @@ function renderPets(){
             : petSort==="type" ? (a,b)=>rank(a.type)-rank(b.type) || b.count-a.count
             : (a,b)=>b.count-a.count);
   let lastType = null;
+  const onHere = groups.filter(g=>(petType==="all"||g.type===petType) && (!q || (g.title+" "+g.npcs.map(s=>nm(s.n)).join(" ")).toLowerCase().includes(q)));
+  const secHere = document.createElement("h3"); secHere.className = "sec";
+  secHere.textContent = `On this map · ${groups.filter(g=>g.pet).length} pets`;
+  list.appendChild(secHere);
+  if (!onHere.length) { const p = document.createElement("p"); p.className = "note"; p.style.margin = "4px"; p.textContent = "No matching pets spawn on this map."; list.appendChild(p); }
   for (const g of groups) {
     const pet = g.pet && D.pets[g.pet];
     const title = g.title;
@@ -376,7 +560,25 @@ function renderPets(){
     b.addEventListener("click", ()=>highlight(g));
     list.appendChild(b);
   }
+  // everything else, with where to find it
+  const shown = away.filter(a=>(petType==="all"||a.type===petType) && (!q || (a.title+" "+a.other.join(" ")).toLowerCase().includes(q)))
+    .sort((a,b)=>(b.maps.length?1:0)-(a.maps.length?1:0) || (b.other.length?1:0)-(a.other.length?1:0) || a.title.localeCompare(b.title));
+  const secAway = document.createElement("h3"); secAway.className = "sec";
+  secAway.textContent = `Elsewhere · ${away.length} pets`;
+  list.appendChild(secAway);
+  for (const a of shown) {
+    const row = document.createElement("div"); row.className = "pet else";
+    const links = a.maps.map(x=>`<button type="button" data-key="${x.key}" data-pet="${a.id}" title="Open ${esc(D.maps[x.key].title)}">${esc(D.maps[x.key].title)} · ${x.count}</button>`).join("");
+    const rest = a.other.map(o=>`<span>${esc(placeLabel(o))}</span>`).join("");
+    const none = (!links && !rest) ? `<span>No spawn place in the game data (shop, event or reward pet)</span>` : "";
+    row.innerHTML = `<span style="display:flex;gap:8px;align-items:center"><span class="sw" style="background:${CATC[a.type]||CATC[""]}"></span><span>${esc(a.title)}<span class="cat" style="display:block">${esc(CAT[a.type]||a.type||"")}</span></span></span><span class="where">${links}${rest}${none}</span>`;
+    row.querySelectorAll("button[data-key]").forEach(l=>l.addEventListener("click", ()=>goToPet(l.dataset.key, l.dataset.pet)));
+    list.appendChild(row);
+  }
 }
+
+// enemy monsters take the colour of their pet type (Fera, Cogni, Natura, Varian)
+function petColor(s){ const pet = s.pet && D.pets[s.pet]; return CATC[pet ? (pet.c||"") : ""] || CATC[""]; }
 
 function highlight(g){
   const m = D.maps[cur];
@@ -386,7 +588,7 @@ function highlight(g){
   const ls = [];
   for (const s of g.npcs) for (const p of pts(s.p)) {
     const at = ll(m,p[0],p[1]); ls.push(at);
-    dot(at, {renderer, radius:5, color:"#1a0f2e", weight:1.5, fillColor:"#c9a6ff", fillOpacity:1}).bindPopup(()=>popupNpc(s,p)).addTo(petHi);
+    dot(at, {renderer, radius:5, color:"#0b1117", weight:1.5, fillColor:petColor(s), fillOpacity:1}).bindPopup(()=>popupNpc(s,p)).addTo(petHi);
   }
   if (ls.length) map.flyToBounds(L.latLngBounds(ls).pad(0.3), {maxZoom:0, duration:.6});
   renderPets();
@@ -420,6 +622,11 @@ L.DomEvent.disableClickPropagation(document.querySelector(".sizer"));el("lang").
 ["boss","kib","pets"].forEach(k=>el("L_"+k).addEventListener("change", e=>{ e.target.checked ? map.addLayer(layers[k]) : map.removeLayer(layers[k]); store.set("L_"+k, e.target.checked); }));
 ["boss","kib","pets"].forEach(k=>{ const v = store.get("L_"+k, null); if (v !== null) el("L_"+k).checked = v; });
 document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click", ()=>{ el("q").value=""; el("results").hidden=true; el("petq").value=""; build(b.dataset.map); }));
+// dungeon picker: every dungeon map, alphabetically
+Object.entries(D.maps).filter(([,m])=>m.dungeon).sort((a,b)=>a[1].title.localeCompare(b[1].title)).forEach(([k,m])=>{
+  const o = document.createElement("option"); o.value = k; o.textContent = m.title; el("dungeon").appendChild(o);
+});
+el("dungeon").addEventListener("change", e=>{ if (e.target.value) { el("q").value=""; el("results").hidden=true; build(e.target.value); } });
 map.on("mousemove", e=>{ const w = toWorld(D.maps[cur], e.latlng); el("hud").textContent = `x ${fmt(w[0])}  y ${fmt(w[1])}`; });
 el("sheetBtn").addEventListener("click", ()=>{ const s=el("side"); const c=s.classList.toggle("collapsed"); el("sheetBtn").textContent = c?"Show panel":"Hide panel"; el("sheetBtn").setAttribute("aria-expanded", !c); setTimeout(()=>map.invalidateSize(),50); });
 new ResizeObserver(()=>map.invalidateSize()).observe(el("map"));
@@ -428,5 +635,10 @@ window.addEventListener("hashchange", ()=>{ const k=location.hash.slice(1); if (
 const start = (location.hash||"").slice(1);
 build(D.maps[start] ? start : store.get("map","verteron"));
 applySize();
+el("swBoss").innerHTML = bossSvg(false);
+el("swKib").innerHTML = KIB_SVG;
 })();
 </script>
+
+</body>
+</html>
